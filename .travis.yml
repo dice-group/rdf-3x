@@ -1,0 +1,24 @@
+os: linux
+dist: bionic
+language: cpp
+
+addons:
+  apt:
+    packages:
+      - g++
+      - build-essential
+
+cache:
+
+script:
+  - make
+  
+deploy:
+  provider: releases
+  file_glob: true
+  file: 
+    - "bin/rdf3x*"
+  token: $github_token
+  draft: true
+  cleanup: false
+  skip_cleanup: true
