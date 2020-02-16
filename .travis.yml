@@ -1,0 +1,29 @@
+os: linux
+dist: bionic
+language: cpp
+
+addons:
+  apt:
+    packages:
+      - g++
+      - build-essential
+
+cache:
+
+script:
+  - make
+  
+before_deploy:
+  - ls -ld .
+  - ls -ld bin
+deploy:
+  provider: releases
+  file_glob: true
+  file: 
+    - "bin/*
+  token: $github_token
+  draft: true
+  cleanup: false
+  skip_cleanup: true
+  
+
