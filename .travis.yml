@@ -1,25 +1,26 @@
---- 
-addons: 
-  apt: 
-    packages: 
-      - g++
-      - build-essential
-before_deploy: 
-  - "ls -ld ."
-  - "ls -ld bin"
-cache: ~
-deploy: 
-  cleanup: false
-  draft: true
-  file_glob: true
-  file: 
-    - bin/*
-  file_glob: true
-  provider: releases
-  skip_cleanup: true
-  token: $github_token
+os: linux
 dist: bionic
 language: cpp
-os: linux
-script: 
+
+addons:
+  apt:
+    packages:
+      - g++
+      - build-essential
+
+cache:
+
+script:
   - make
+  - ls -ld .
+  - ls -ld bin
+  
+deploy:
+  provider: releases
+  file_glob: true
+  file: 
+    - "bin/*"
+  token: $github_token
+  draft: true
+  cleanup: false
+  skip_cleanup: true
