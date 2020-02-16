@@ -12,14 +12,12 @@ cache:
 
 script:
   - make
-  - ls -ld .
-  - ls -ld bin
   
 deploy:
   provider: releases
   file_glob: true
   file: 
-    - "bin/*"
+    - "bin/rdf3x*"
   token: $github_token
   draft: true
   cleanup: false
